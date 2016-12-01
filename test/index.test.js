@@ -84,17 +84,26 @@ describe('test/index.test.js', () => {
 
   it('should get child when obj is unknown', () => {
     return coffee.fork(path.join(fixtures, 'unknown_obj.js'))
-    .expect('stdout', /prefix > > child/)
     .debug()
+    .expect('stdout', /prefix > > child/)
     .expect('code', 0)
     .end();
   });
 
   it('should write when prefix is function', () => {
     return coffee.fork(path.join(fixtures, 'prefix_function.js'))
+    .debug()
     .expect('stdout', /\d{13} info/)
     .expect('stderr', /\d{13} error/)
+    .expect('code', 0)
+    .end();
+  });
+
+
+  it('should not has max listeners', () => {
+    return coffee.fork(path.join(fixtures, 'max_listeners.js'))
     .debug()
+    .notExpect('stderr', /Warning: Possible EventEmitter memory leak detected/)
     .expect('code', 0)
     .end();
   });

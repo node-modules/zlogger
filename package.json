@@ -41,6 +41,9 @@
     "ci": "npm run lint && npm run cov",
     "autod": "autod"
   },
+  "files": [
+    "index.js"
+  ],
   "author": "popomore <sakura9515@gmail.com>",
   "license": "MIT"
 }
