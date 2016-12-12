@@ -6,6 +6,7 @@ const through = require('through2');
 const split = require('split2');
 const pumpify = require('pumpify');
 
+
 const defaults = {
   stdout: process.stdout,
   stderr: process.stderr,
@@ -29,6 +30,8 @@ class Logger extends Console {
     this.stderr = stderr;
     this.options = options;
 
+    stdout.setMaxListeners(100);
+    stderr.setMaxListeners(100);
     stdout.pipe(options.stdout);
     stderr.pipe(options.stderr);
   }
