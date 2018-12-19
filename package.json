@@ -23,20 +23,18 @@
     "autod": "^2.7.1",
     "coffee": "^3.3.0",
     "eslint": "^3.10.2",
-    "eslint-config-egg": "^3.2.0",
-    "intelli-espower-loader": "^1.0.1",
-    "power-assert": "^1.4.2"
+    "eslint-config-egg": "^3.2.0"
   },
   "engines": {
     "node": ">=4.3.1"
   },
   "ci": {
-    "version": "4, 6, 7"
+    "version": "4, 6, 8, 10"
   },
   "scripts": {
     "test": "npm run lint && npm run test-local",
-    "test-local": "egg-bin test -r intelli-espower-loader",
-    "cov": "egg-bin cov -r intelli-espower-loader",
+    "test-local": "egg-bin test",
+    "cov": "egg-bin cov",
     "lint": "eslint .",
     "ci": "npm run lint && npm run cov",
     "autod": "autod"

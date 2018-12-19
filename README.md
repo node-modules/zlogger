@@ -24,7 +24,7 @@ The last console logger
 
 ## Installation
 
-```
+```bash
 npm install --save zlogger
 ```
 
@@ -35,6 +35,7 @@ npm install --save zlogger
 - ✔︎ Support custom stdout and stderr
 - ✔︎ Support print time
 - ✔︎ Support child logger
+- ✔︎ Support logger level
 
 ## Usage
 
@@ -47,6 +48,21 @@ const logger = new ConsoleLogger({
   prefix: '> ',
 });
 ```
+
+Support log level: `DEBUG` / `INFO` / `WARN` / `ERROR`.
+
+```js
+const logger = new ConsoleLogger({
+  prefix: '> ',
+  level: 'WARN',
+});
+
+logger.error('msg_error');
+logger.info('msg_info');
+
+// [15:03:46] prefix > msg_error
+```
+
 
 Specify stdout/stderr, default is `process.stdout/process.stderr`, you can use `fs` if you want to print to file.
 
@@ -100,12 +116,13 @@ child.info('child');
 
 It will print time before prefix, format is `[HH:MM:SS] `, but you can disable it.
 
-## 参数
+## Options
 
 - {WriteStream} stdout - stdout, `.log` and `.info` will pipe to it，default is process.stdout
 - {WriteStream} stderr - stderr, `.warn` and `.error` will pipe to it，default is process.stderr
 - {String|Function} prefix - every line will start with `prefix`, if it's a function, it will be called every line print.
 - {Boolean} time - print time
+- {String|Number} level - log level
 
 ## License
 

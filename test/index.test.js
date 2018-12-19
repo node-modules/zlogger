@@ -99,12 +99,95 @@ describe('test/index.test.js', () => {
     .end();
   });
 
-
   it('should not has max listeners', () => {
     return coffee.fork(path.join(fixtures, 'max_listeners.js'))
     .debug()
     .notExpect('stderr', /Warning: Possible EventEmitter memory leak detected/)
     .expect('code', 0)
     .end();
+  });
+
+  describe('level', () => {
+    it('ERROR', () => {
+      return coffee.fork(path.join(fixtures, 'level.js'), [ 'ERROR' ])
+        .debug()
+        .expect('stderr', /msg_error/)
+        .notExpect('stdout', /msg_warn/)
+        .notExpect('stdout', /msg_info/)
+        .notExpect('stdout', /msg_log/)
+        .notExpect('stdout', /msg_debug/)
+        .expect('code', 0)
+        .end();
+    });
+
+    it('WARN', () => {
+      return coffee.fork(path.join(fixtures, 'level.js'), [ 'WARN' ])
+        .debug()
+        .expect('stderr', /msg_error/)
+        .expect('stderr', /msg_warn/)
+        .notExpect('stdout', /msg_info/)
+        .notExpect('stdout', /msg_log/)
+        .notExpect('stdout', /msg_debug/)
+        .expect('code', 0)
+        .end();
+    });
+
+    it('INFO', () => {
+      return coffee.fork(path.join(fixtures, 'level.js'), [ 'INFO' ])
+        .debug()
+        .expect('stderr', /msg_error/)
+        .expect('stderr', /msg_warn/)
+        .expect('stdout', /msg_info/)
+        .expect('stdout', /msg_log/)
+        .notExpect('stdout', /msg_debug/)
+        .expect('code', 0)
+        .end();
+    });
+
+    it('DEBUG', () => {
+      return coffee.fork(path.join(fixtures, 'level.js'), [ 'DEBUG' ])
+        .debug()
+        .expect('stderr', /msg_error/)
+        .expect('stderr', /msg_warn/)
+        .expect('stdout', /msg_info/)
+        .expect('stdout', /msg_log/)
+        .expect('stdout', /msg_debug/)
+        .expect('code', 0)
+        .end();
+    });
+
+    it('NONE', () => {
+      return coffee.fork(path.join(fixtures, 'level.js'), [ 'NONE' ])
+        .debug()
+        .notExpect('stderr', /msg_error/)
+        .notExpect('stderr', /msg_warn/)
+        .notExpect('stdout', /msg_info/)
+        .notExpect('stdout', /msg_log/)
+        .notExpect('stdout', /msg_debug/)
+        .expect('code', 0)
+        .end();
+    });
+
+    it('undefined', () => {
+      return coffee.fork(path.join(fixtures, 'level.js'))
+        .debug()
+        .notExpect('stderr', /msg_error/)
+        .notExpect('stderr', /msg_warn/)
+        .notExpect('stdout', /msg_info/)
+        .notExpect('stdout', /msg_log/)
+        .notExpect('stdout', /msg_debug/)
+        .expect('code', 0)
+        .end();
+    });
+
+    it('should use parent level', () => {
+      return coffee.fork(path.join(fixtures, 'level_child.js'), [ 'ERROR' ])
+        .debug()
+        .expect('stderr', /msg_error/)
+        .expect('stderr', /child:msg_child_error_3/)
+        .notExpect('stdout', /child:msg_child_info/)
+        .expect('code', 0)
+        .end();
+    });
   });
 });
