@@ -12,9 +12,7 @@ module.exports = {
     'egg-bin',
     'egg-ci',
     'eslint',
-    'eslint-config-egg',
-    'intelli-espower-loader',
-    'power-assert',
+    'eslint-config-egg'
   ],
   keep: [
   ],

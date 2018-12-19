@@ -3,7 +3,7 @@
 const fs = require('fs');
 const path = require('path');
 const coffee = require('coffee');
-const assert = require('power-assert');
+const assert = require('assert');
 
 
 const fixtures = path.join(__dirname, 'fixtures');

@@ -120,24 +120,24 @@ class Logger extends Console {
     return this.options.level <= levels[level];
   }
 
-  error() {
-    if (this._shouldLog('ERROR')) return super.error.apply(this, arguments);
+  error(...args) {
+    if (this._shouldLog('ERROR')) return super.error(...args);
   }
 
-  warn() {
-    if (this._shouldLog('WARN')) return super.warn.apply(this, arguments);
+  warn(...args) {
+    if (this._shouldLog('WARN')) return super.warn(...args);
   }
 
-  info() {
-    if (this._shouldLog('INFO')) return super.info.apply(this, arguments);
+  info(...args) {
+    if (this._shouldLog('INFO')) return super.info(...args);
   }
 
-  log() {
-    return this.info.apply(this, arguments);
+  log(...args) {
+    return this.info(...args);
   }
 
-  debug() {
-    if (this._shouldLog('DEBUG')) return super.debug.apply(this, arguments);
+  debug(...args) {
+    if (this._shouldLog('DEBUG')) return super.debug(...args);
   }
 }
 
