@@ -63,7 +63,6 @@ logger.info('msg_info');
 // [15:03:46] prefix > msg_error
 ```
 
-
 Specify stdout/stderr, default is `process.stdout/process.stderr`, you can use `fs` if you want to print to file.
 
 ```js
