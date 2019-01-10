@@ -43,6 +43,7 @@
     "autod": "autod"
   },
   "files": [
+    "index.d.ts",
     "index.js"
   ],
   "author": "popomore <sakura9515@gmail.com>",
