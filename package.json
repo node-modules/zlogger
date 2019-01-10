@@ -18,6 +18,7 @@
     "through2": "^3.0.0"
   },
   "devDependencies": {
+    "@types/node": "^10.12.18",
     "autod": "^3.0.1",
     "coffee": "^5.1.1",
     "egg-bin": "^4.9.0",
