@@ -180,6 +180,16 @@ describe('test/index.test.js', () => {
         .end();
     });
 
+    it('should compile ts without error', () => {
+      return coffee.fork(
+        require.resolve('typescript/bin/tsc'),
+        [ '-p', path.resolve(__dirname, './fixtures/ts/tsconfig.json') ]
+      )
+        .debug()
+        .expect('code', 0)
+        .end();
+    });
+
     it('should use parent level', () => {
       return coffee.fork(path.join(fixtures, 'level_child.js'), [ 'ERROR' ])
         .debug()

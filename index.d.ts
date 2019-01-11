@@ -1,5 +1,6 @@
 import { WriteStream } from 'fs';
 import { ChildProcess } from 'child_process';
+import { Writable } from 'stream';
 
 type LogLevel =
   | 'DEBUG'
@@ -19,24 +20,12 @@ interface ConsoleLoggerOpt {
   level?: LogLevel;
 }
 
-declare class ConsoleLogger {
+declare class ConsoleLogger extends Console {
   constructor(opt?: ConsoleLoggerOpt);
-
-  error(message?: any, ...optionalParams: any[]): void;
-
-  warn(message?: any, ...optionalParams: any[]): void;
-
-  info(message?: any, ...optionalParams: any[]): void;
-
-  log(message?: any, ...optionalParams: any[]): void;
-
-  debug(message?: any, ...optionalParams: any[]): void;
 
   child(prefix: string): ConsoleLogger;
 
-  child(child: ChildProcess, prefix: string): ConsoleLogger;
-
-  child(child: any, prefix: string): ConsoleLogger;
+  child(child: ChildProcess | Writable, prefix: string): ConsoleLogger;
 
   end(): void;
 }
