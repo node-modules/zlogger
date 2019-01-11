@@ -10,8 +10,8 @@ let logger = new ConsoleLogger({
   time: false,
 });
 
-
-logger.level = 'WARN'
+logger.level = 'WARN';
+logger.level =10;
 logger.stdout = fs.createWriteStream('stdout.log');
 logger.stderr = fs.createWriteStream('stdout.log');
 
