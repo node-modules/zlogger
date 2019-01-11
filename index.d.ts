@@ -1,6 +1,5 @@
 import { WriteStream } from 'fs';
 import { ChildProcess } from 'child_process';
-import { Writable } from 'stream';
 
 type LogLevel =
   | 'DEBUG'
@@ -25,7 +24,7 @@ declare class ConsoleLogger extends Console {
 
   child(prefix: string): ConsoleLogger;
 
-  child(child: ChildProcess | Writable, prefix: string): ConsoleLogger;
+  child(child: ChildProcess | WriteStream, prefix: string): ConsoleLogger;
 
   end(): void;
 }
