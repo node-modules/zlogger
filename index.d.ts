@@ -21,12 +21,12 @@ interface ConsoleLoggerOpt {
 
 declare class ConsoleLogger extends Console {
   constructor(opt?: ConsoleLoggerOpt);
-  
-  public stdout:WriteStream;
 
-  public stderr:WriteStream;
+  private stdout:WriteStream;
 
-  public level:LogLevel;
+  private stderr:WriteStream;
+
+  private level:LogLevel;
 
   child(prefix: string): ConsoleLogger;
 
