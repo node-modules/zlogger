@@ -18,12 +18,14 @@
     "through2": "^3.0.0"
   },
   "devDependencies": {
+    "@types/node": "^10.12.18",
     "autod": "^3.0.1",
     "coffee": "^5.1.1",
     "egg-bin": "^4.9.0",
     "egg-ci": "^1.11.0",
     "eslint": "^5.10.0",
-    "eslint-config-egg": "^7.1.0"
+    "eslint-config-egg": "^7.1.0",
+    "typescript": "^3.2.2"
   },
   "engines": {
     "node": ">=8"
@@ -40,6 +42,7 @@
     "autod": "autod"
   },
   "files": [
+    "index.d.ts",
     "index.js"
   ],
   "author": "popomore <sakura9515@gmail.com>",
