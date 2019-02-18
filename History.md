@@ -1,4 +1,10 @@
 
+2.1.0 / 2019-02-18
+==================
+
+**others**
+  * [[`3376d63`](http://github.com/node-modules/zlogger/commit/3376d634ab714c41fa119e0298fd0a75e48fe74c)] - docs: add index.d.ts and test case (#4) (DiamondYuan <<541832074@qq.com>>)
+
 2.0.0 / 2018-12-19
 ==================
 
