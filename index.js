@@ -137,7 +137,7 @@ class Logger extends Console {
   }
 
   debug(...args) {
-    if (this._shouldLog('DEBUG')) return super.debug(...args);
+    if (this._shouldLog('DEBUG')) return (super.debug || super.log)(...args);
   }
 }
 
