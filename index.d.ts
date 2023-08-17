@@ -1,5 +1,6 @@
 import { WriteStream } from 'fs';
 import { ChildProcess } from 'child_process';
+import { Console } from 'console';
 
 type LogLevel =
   | 'DEBUG'
